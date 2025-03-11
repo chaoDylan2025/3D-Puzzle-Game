@@ -6,10 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		50D557312D80E34100A3B67D /* 3D Puzzle Game */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "3D Puzzle Game";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXGroup section */
 		50D5571B2D80E20F00A3B67D = {
 			isa = PBXGroup;
 			children = (
+				50D557312D80E34100A3B67D /* 3D Puzzle Game */,
 			);
 			sourceTree = "<group>";
 		};
