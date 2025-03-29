@@ -47,7 +47,6 @@ class GameViewController: UIViewController {
         
         // retrieve the SCNView
         let scnView = self.view as! SCNView
-        
         // set the scene to the view
         scnView.scene = scene
         
