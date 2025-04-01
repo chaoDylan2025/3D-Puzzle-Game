@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		50A6585B2D9C825D0064A1FD /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A6585A2D9C825D0064A1FD /* SceneKit.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		37F20FE02D95F065000D8946 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		37F20FCA2D95F060000D8946 /* 3D-Puzzle-Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "3D-Puzzle-Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F20FDF2D95F065000D8946 /* 3D-Puzzle-GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "3D-Puzzle-GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F20FE92D95F065000D8946 /* 3D-Puzzle-GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "3D-Puzzle-GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50A6585A2D9C825D0064A1FD /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50A6585B2D9C825D0064A1FD /* SceneKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +84,7 @@
 				37F20FCC2D95F060000D8946 /* 3D-Puzzle-Game */,
 				37F20FE22D95F065000D8946 /* 3D-Puzzle-GameTests */,
 				37F20FEC2D95F065000D8946 /* 3D-Puzzle-GameUITests */,
+				50A658592D9C825D0064A1FD /* Frameworks */,
 				37F20FCB2D95F060000D8946 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +97,14 @@
 				37F20FE92D95F065000D8946 /* 3D-Puzzle-GameUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		50A658592D9C825D0064A1FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50A6585A2D9C825D0064A1FD /* SceneKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
