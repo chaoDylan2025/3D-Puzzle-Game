@@ -11,4 +11,10 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func OnPlayButtonTap(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "LevelSelection", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LevelViewController")
+        self.present(vc, animated: true, completion: nil)
+    }
 }
