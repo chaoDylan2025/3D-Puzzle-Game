@@ -11,4 +11,9 @@ class LevelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    @IBAction func goToMainMenu(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "MainMenu", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+        self.present(vc, animated: true, completion: nil)
+    }
 }
