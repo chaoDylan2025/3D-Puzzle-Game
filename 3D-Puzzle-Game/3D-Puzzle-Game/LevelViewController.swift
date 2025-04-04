@@ -16,4 +16,7 @@ class LevelViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "MainViewController")
         self.present(vc, animated: true, completion: nil)
     }
+    @IBAction func goToLevel1(_ sender: Any) {
+        self.present(GameViewController(), animated: true, completion: nil)
+    }
 }
