@@ -16,7 +16,7 @@ struct LevelDisplay: View {
                 options: [.allowsCameraControl, .autoenablesDefaultLighting],
                 preferredFramesPerSecond: 60,
                 antialiasingMode: .multisampling4X,
-            ).background(Color.red)
+            )
         }
     }
 }

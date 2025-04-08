@@ -13,15 +13,17 @@ struct ContentView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .padding([.top, .bottom], 100)
                     
-                    Button("Play"){
-                        
-                    }
-                    .frame(width: 60)
-                    .padding(.horizontal, 50)
-                    .padding(.vertical, 15)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .clipShape(Capsule())
+                    NavigationLink(destination: LevelSelection(), label: {
+                        VStack {
+                            Text("Play")
+                            .frame(width: 60)
+                            .padding(.horizontal, 50)
+                            .padding(.vertical, 15)
+                            .background(Color.green)
+                            .foregroundColor(.white)
+                            .clipShape(Capsule())
+                        }
+                    })
                     
                     Button("Setting"){
                         
