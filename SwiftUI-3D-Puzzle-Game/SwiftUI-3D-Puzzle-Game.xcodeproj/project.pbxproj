@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3749B2342DA5BB3400A47763 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3749B2332DA5BB3400A47763 /* SceneKit.framework */; };
+		3749B2352DA5C4C700A47763 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3749B2332DA5BB3400A47763 /* SceneKit.framework */; };
+		3749B2372DA5C57200A47763 /* .gitignore in Sources */ = {isa = PBXBuildFile; fileRef = 3749B2362DA5C57200A47763 /* .gitignore */; };
 		3780BE8B2DA485DD00835343 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3780BE8A2DA485DD00835343 /* SceneKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3749B2332DA5BB3400A47763 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/System/iOSSupport/System/Library/Frameworks/SceneKit.framework; sourceTree = DEVELOPER_DIR; };
+		3749B2362DA5C57200A47763 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3780BE8A2DA485DD00835343 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		37A675DC2DA1D98F0089307B /* SwiftUI-3D-Puzzle-Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-3D-Puzzle-Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37A675E92DA1D9940089307B /* SwiftUI-3D-Puzzle-GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftUI-3D-Puzzle-GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3749B2342DA5BB3400A47763 /* SceneKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3749B2352DA5C4C700A47763 /* SceneKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +88,7 @@
 		3780BE892DA485DD00835343 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3749B2332DA5BB3400A47763 /* SceneKit.framework */,
 				3780BE8A2DA485DD00835343 /* SceneKit.framework */,
 			);
 			name = Frameworks;
@@ -89,6 +97,7 @@
 		37A675D32DA1D98F0089307B = {
 			isa = PBXGroup;
 			children = (
+				3749B2362DA5C57200A47763 /* .gitignore */,
 				37A676132DA1DB730089307B /* SwiftUI-3D-Puzzle-Game */,
 				37A675EC2DA1D9940089307B /* SwiftUI-3D-Puzzle-GameTests */,
 				37A675F62DA1D9940089307B /* SwiftUI-3D-Puzzle-GameUITests */,
@@ -251,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3749B2372DA5C57200A47763 /* .gitignore in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
