@@ -1,22 +1,43 @@
-//
-//  ContentView.swift
-//  SwiftUI-3D-Puzzle-Game
-//
-//  Created by Dylan Chao on 4/5/25.
-//
-
 import SwiftUI
 import SceneKit
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            ZStack{
+                VStack (spacing: 60){
+                    // Game Title
+                    Text("3D Puzzle Game")
+                    .font(.largeTitle)
+                    .bold()
+                    .navigationBarTitleDisplayMode(.inline)
+                    .padding([.top, .bottom], 100)
+                    
+                    Button("Play"){
+                        
+                    }
+                    .frame(width: 60)
+                    .padding(.horizontal, 50)
+                    .padding(.vertical, 15)
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .clipShape(Capsule())
+                    
+                    Button("Setting"){
+                        
+                    }
+                    .frame(width: 60)
+                    .padding(.horizontal, 50)
+                    .padding(.vertical, 15)
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .clipShape(Capsule())
+                    Spacer()
+                }
+            }
+            .containerRelativeFrame([.horizontal, .vertical])
+            .background(Color.red.opacity(0.6))
         }
-        .padding()
     }
 }
 
