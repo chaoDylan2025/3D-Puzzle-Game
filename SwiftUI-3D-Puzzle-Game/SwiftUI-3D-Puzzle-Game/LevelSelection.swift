@@ -23,7 +23,7 @@ struct LevelSelection: View {
                 
                 VStack {
                     ForEach(levels, id:\.self) { level in
-                        NavigationLink(destination: LevelSelection(), label: {
+                        NavigationLink(destination: DifficultySettings(), label: {
                             VStack {
                                 Text(level)
                                 .frame(width: 60)
