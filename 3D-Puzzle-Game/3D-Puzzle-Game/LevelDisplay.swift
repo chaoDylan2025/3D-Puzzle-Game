@@ -15,7 +15,7 @@ struct LevelDisplay: View {
                 scene: SCNScene(named: "art.scnassets/level1.scn"),
                 options: [.allowsCameraControl, .autoenablesDefaultLighting],
                 preferredFramesPerSecond: 60,
-                antialiasingMode: .multisampling4X,
+                antialiasingMode: .multisampling4X
             )
         }
     }
