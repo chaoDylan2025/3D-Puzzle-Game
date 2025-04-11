@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct _D_Puzzle_GameApp: App {
+    @StateObject var level = LevelViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(level)
         }
     }
 }
