@@ -58,12 +58,7 @@ struct ContentView: View {
                 
                 // Displays when user selects a difficulty
                 else{
-                    SceneView(
-                        scene: SCNScene(named: level.sceneToDisplay),
-                        options: [.allowsCameraControl, .autoenablesDefaultLighting],
-                        preferredFramesPerSecond: 60,
-                        antialiasingMode: .multisampling4X
-                    )
+                    GameView()
                 }
                 
             }
