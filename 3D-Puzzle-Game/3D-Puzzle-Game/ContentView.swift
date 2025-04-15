@@ -9,40 +9,63 @@ import SwiftUI
 import SceneKit
 
 struct ContentView: View {
+    @State private var path = NavigationPath()
+    @EnvironmentObject var level: LevelViewModel
+    let showMainMenu = false
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ZStack{
-                VStack (spacing: 60){
-                    // Game Title
-                    Text("3D Puzzle Game")
-                    .font(.largeTitle)
-                    .bold()
-                    .navigationBarTitleDisplayMode(.inline)
-                    .padding([.top, .bottom], 100)
-                    
-                    NavigationLink(destination: LevelSelection(), label: {
-                        VStack {
-                            Text("Play")
-                            .frame(width: 60)
-                            .padding(.horizontal, 50)
-                            .padding(.vertical, 15)
-                            .background(Color.green)
-                            .foregroundColor(.white)
-                            .clipShape(Capsule())
-                        }
-                    })
-                    
-                    Button("Setting"){
+                // Displays main menu if a level is not displayed
+                if(!level.showLevel){
+                    VStack (spacing: 60){
+                        // Game Title
+                        Text("3D Puzzle Game")
+                        .font(.largeTitle)
+                        .bold()
+                        .navigationBarTitleDisplayMode(.inline)
+                        .padding([.top, .bottom], 100)
                         
+                        Button("Play"){
+                            path.append("Play")
+                        }
+                        .frame(width: 60)
+                        .padding(.horizontal, 50)
+                        .padding(.vertical, 15)
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+                        .navigationDestination(for: String.self){ view in
+                            if(view == "Play"){
+                                LevelSelection(view: view, path: $path)
+                            }
+                            else{
+                                DifficultySettings()
+                            }
+                        }
+                        
+                        Button("Setting"){
+                            
+                        }
+                        .frame(width: 60)
+                        .padding(.horizontal, 50)
+                        .padding(.vertical, 15)
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+                        Spacer()
                     }
-                    .frame(width: 60)
-                    .padding(.horizontal, 50)
-                    .padding(.vertical, 15)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .clipShape(Capsule())
-                    Spacer()
                 }
+                
+                // Displays when user selects a difficulty
+                else{
+                    SceneView(
+                        scene: SCNScene(named: level.sceneToDisplay),
+                        options: [.allowsCameraControl, .autoenablesDefaultLighting],
+                        preferredFramesPerSecond: 60,
+                        antialiasingMode: .multisampling4X
+                    )
+                }
+                
             }
             .containerRelativeFrame([.horizontal, .vertical])
             .background(Color.red.opacity(0.6))
@@ -52,5 +75,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(LevelViewModel())
 }
-
