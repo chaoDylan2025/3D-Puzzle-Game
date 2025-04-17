@@ -58,9 +58,13 @@ struct ContentView: View {
                 
                 // Displays when user selects a difficulty
                 else{
-                    GameView()
+                    VStack(){
+                        VStack(){
+                            Text("\(level.currentTimer)")
+                        }
+                        GameView()
+                    }
                 }
-                
             }
             .containerRelativeFrame([.horizontal, .vertical])
             .background(Color.red.opacity(0.6))

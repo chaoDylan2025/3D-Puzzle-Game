@@ -26,8 +26,8 @@ struct DifficultySettings: View {
      ]
  
      var body: some View {
-     // Display difficulty settings view
-     if(!currentLevel.confirmedDifficulty){
+         // Display difficulty settings view
+         if(!currentLevel.confirmedDifficulty){
              ZStack{
                  VStack (spacing: 20){
                      // Game Title
@@ -43,7 +43,9 @@ struct DifficultySettings: View {
                  }
      
                  VStack {
+                     // Displays each difficulty
                      ForEach(difficultyArr) { setting in
+                         // Creates a button structure
                          VStack {
                              Text(setting.difficulty)
                              .frame(width: 100)
@@ -53,18 +55,38 @@ struct DifficultySettings: View {
                              .foregroundColor(.white)
                              .clipShape(Capsule())
                          }.padding([.top, .bottom], 20)
-                             .simultaneousGesture(TapGesture().onEnded{
-                                     currentLevel.selectedDifficulty = setting.difficulty
-                                     currentLevel.confirmedDifficulty = true
-                                     dismiss()
-                                 })
+                         .simultaneousGesture(TapGesture().onEnded{
+                             currentLevel.confirmedDifficulty = true
+                             setDifficultyTimer(difficulty: setting.difficulty)
+                             dismiss()
+                         })
                     }.padding([.bottom], 20)
                  }
             }
              .containerRelativeFrame([.horizontal, .vertical])
              .background(Color.red.opacity(0.6))
         }
-     }
+    }
+    
+    
+    func setDifficultyTimer(difficulty: String){
+        switch(difficulty){
+            case "Easy":
+                currentLevel.currentTimer = "2:00"
+                break
+                
+            case "Medium":
+                currentLevel.currentTimer = "1:30"
+                break
+            
+            case "Hard":
+            currentLevel.currentTimer = "1:00"
+                break
+            
+            default:
+                break
+        }
+    }
  }
  
  #Preview {
