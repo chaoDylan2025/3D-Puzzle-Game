@@ -67,7 +67,7 @@ struct ContentView: View {
                 }
             }
             .containerRelativeFrame([.horizontal, .vertical])
-            .background(Color.red.opacity(0.6))
+            .background(!level.showLevel ? Color.red.opacity(0.6): level.contentViewColor)
         }
     }
 }
