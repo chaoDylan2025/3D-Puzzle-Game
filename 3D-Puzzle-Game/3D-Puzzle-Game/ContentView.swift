@@ -59,8 +59,26 @@ struct ContentView: View {
                 // Displays when user selects a difficulty
                 else{
                     VStack(){
+                        // Top part of each level
                         VStack(){
-                            Text("\(level.currentTimer)")
+                            // Pause button area
+                            VStack(){
+                                HStack{
+                                    Spacer()
+                                    Button("Pause"){
+                                        
+                                    }.padding(.horizontal, 20)
+                                }
+                            }.padding([.bottom], 20)
+                            // Timer area
+                            VStack(){
+                                HStack{
+                                    Spacer()
+                                    Text("\(level.currentTimer)").foregroundColor(.white)
+                                    Spacer()
+                                }
+                            }
+                            
                         }
                         GameView()
                     }
