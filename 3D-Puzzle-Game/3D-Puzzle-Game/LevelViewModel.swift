@@ -12,4 +12,7 @@ class LevelViewModel: ObservableObject {
     @Published var showLevel: Bool = false // Shows level in ContentView
     @Published var contentViewColor: Color = Color.black // Changes color of ContentView's ZStack
     @Published var sceneToDisplay: String = "" // Contains level to display
+    @Published var pieceCounts: [String: Int] = [
+        "art.scnassets/level1.scn": 4
+    ]
 }

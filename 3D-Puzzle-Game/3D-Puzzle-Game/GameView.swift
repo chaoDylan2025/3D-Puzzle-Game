@@ -43,23 +43,33 @@ struct SceneViewWrapper: UIViewRepresentable {
     func updateUIView(_ uiView: SCNView, context: Context) {}
     
     func makeCoordinator() -> Coordinator {
-        Coordinator()
+        Coordinator(sceneToDisplay: level.sceneToDisplay)
     }
     
     class Coordinator: NSObject {
         weak var sceneView: SCNView?
         var selectedNode: SCNNode?
         var lastHitPosition: SCNVector3?
+        var tagPairs: [String : String] = [:]
+        var sceneToDisplay: String
+        
+        let levelPieceCounts: [String : Int] = [
+            "art.scnassets/level1.scn" : 4
+        ]
+        
+        init(sceneToDisplay: String) {
+            self.sceneToDisplay = sceneToDisplay
+        }
         
         @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
             guard let sceneView = sceneView else { return }
+            
             let location = gesture.location(in: sceneView)
             
             if gesture.state == .began {
                 let hits = sceneView.hitTest(location, options: nil)
                 
                 if let hit = hits.first(where: { $0.node.name!.prefix(5) == "piece" }) {
-                    print(hit.node.name!)
                     selectedNode = hit.node
                     lastHitPosition = hit.worldCoordinates
                 }
@@ -81,23 +91,44 @@ struct SceneViewWrapper: UIViewRepresentable {
                 if let scene = sceneView.scene {
                     var minDist: Float = 100000.0
                     var snapPosition: SCNVector3 = SCNVector3()
+                    var planeTag: String = ""
                     
-                    for potentialPlane in scene.rootNode.childNodes where potentialPlane.name == "plane" {
+                    for potentialPlane in scene.rootNode.childNodes where potentialPlane.name!.prefix(5) == "plane" {
                         let distance = getDistance(pos1: node.worldPosition, pos2: potentialPlane.worldPosition)
                         
                         if distance < minDist { // adjust threshold as needed
                             minDist = distance
                             snapPosition = potentialPlane.worldPosition
+                            planeTag = potentialPlane.name!
                         }
                     }
                     
                     if (minDist < 1.0) {
                         node.position = snapPosition
+                        tagPairs[planeTag] = node.name
+                        print(tagPairs)
+                        print(tagPairs.count)
+                        print(levelPieceCounts[sceneToDisplay]!)
                     }
                 }
 
                 selectedNode = nil
                 lastHitPosition = nil
+                
+                if tagPairs.count >= levelPieceCounts[sceneToDisplay]! {
+                    var correctPieces = 0
+                    
+                    for pair in tagPairs {
+                        if pair.key.suffix(2) == pair.value.suffix(2) {
+                            correctPieces += 1
+                        }
+                    }
+                    
+                    if correctPieces == tagPairs.count {
+                        print("===============")
+                        print("PLAYER WINS, LEVEL IS FINISHED")
+                    }
+                }
             }
         }
         
