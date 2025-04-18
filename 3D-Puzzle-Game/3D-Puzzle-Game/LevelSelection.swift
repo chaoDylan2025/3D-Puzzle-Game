@@ -18,38 +18,54 @@ struct LevelSelection: View {
     
     var body: some View {
         ZStack{
-            VStack (spacing: 20){
-                // Game Title
-                Text("Select a Level")
-                    .font(.title)
-                    .bold()
-                    .padding([.top], 20)
-                Spacer()
-            }
-            VStack {
-                ForEach(levels, id:\.self) { level in
-                    Button(level) {
-                        levelSceneToDisplay(level: level, viewModel: currentLevel)
-                        path.append("Difficulty")
+            // Display only if user has not selected a level
+            if(!currentLevel.showLevel){
+                VStack (spacing: 20){
+                    // Game Title
+                    Text("Select a Level")
+                        .font(.title)
+                        .bold()
+                        .padding([.top], 20)
+                    Spacer()
+                }
+                VStack {
+                    ForEach(levels, id:\.self) { level in
+                        Button(level) {
+                            levelSceneToDisplay(level: level, viewModel: currentLevel)
+                            currentLevel.showLevel = true
+                        }
+                        .frame(width: 60)
+                        .padding(.horizontal, 50)
+                        .padding(.vertical, 15)
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .clipShape(Capsule())
+                        .padding([.top, .bottom], 20)
                     }
-                    .frame(width: 60)
-                    .padding(.horizontal, 50)
-                    .padding(.vertical, 15)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .clipShape(Capsule())
-                    .padding([.top, .bottom], 20)
                 }
             }
-        }
-        .onAppear{
-            if(currentLevel.confirmedDifficulty){
-                currentLevel.showLevel = true
-                path = NavigationPath() // Reset the navigation state
+            else{
+                VStack(){
+                    // Top part of each level
+                    VStack(){
+                        // Pause button area
+                        VStack(){
+                            HStack{
+                                Spacer()
+                                Button("Pause"){
+                                    
+                                }
+                                Spacer()
+                            }
+                        
+                        }
+                        GameView()
+                    }
+                }
             }
-        }
+        }.navigationBarBackButtonHidden(!currentLevel.showLevel ? false : true)
         .containerRelativeFrame([.horizontal, .vertical])
-        .background(Color.red.opacity(0.6))
+        .background(!currentLevel.showLevel ? Color.red.opacity(0.6): currentLevel.contentViewColor)
     }
     
     func levelSceneToDisplay(level: String, viewModel: LevelViewModel){

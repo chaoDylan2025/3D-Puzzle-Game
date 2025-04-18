@@ -15,77 +15,43 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $path) {
             ZStack{
-                // Displays main menu if a level is not displayed
-                if(!level.showLevel){
-                    VStack (spacing: 60){
-                        // Game Title
-                        Text("3D Puzzle Game")
-                        .font(.largeTitle)
-                        .bold()
-                        .navigationBarTitleDisplayMode(.inline)
-                        .padding([.top, .bottom], 100)
-                        
-                        Button("Play"){
-                            path.append("Play")
-                        }
-                        .frame(width: 60)
-                        .padding(.horizontal, 50)
-                        .padding(.vertical, 15)
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .clipShape(Capsule())
-                        .navigationDestination(for: String.self){ view in
-                            if(view == "Play"){
-                                LevelSelection(view: view, path: $path)
-                            }
-                            else{
-                                DifficultySettings()
-                            }
-                        }
-                        
-                        Button("Setting"){
-                            
-                        }
-                        .frame(width: 60)
-                        .padding(.horizontal, 50)
-                        .padding(.vertical, 15)
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .clipShape(Capsule())
-                        Spacer()
+                VStack (spacing: 60){
+                    // Game Title
+                    Text("3D Puzzle Game")
+                    .font(.largeTitle)
+                    .bold()
+                    .navigationBarTitleDisplayMode(.inline)
+                    .padding([.top, .bottom], 100)
+                    
+                    Button("Play"){
+                        path.append("Play")
                     }
-                }
-                
-                // Displays when user selects a difficulty
-                else{
-                    VStack(){
-                        // Top part of each level
-                        VStack(){
-                            // Pause button area
-                            VStack(){
-                                HStack{
-                                    Spacer()
-                                    Button("Pause"){
-                                        
-                                    }.padding(.horizontal, 20)
-                                }
-                            }.padding([.bottom], 20)
-                            // Timer area
-                            VStack(){
-                                HStack{
-                                    Spacer()
-                                    Text("\(level.currentTimer)").foregroundColor(.white)
-                                    Spacer()
-                                }
-                            }
-                            
+                    .frame(width: 60)
+                    .padding(.horizontal, 50)
+                    .padding(.vertical, 15)
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .clipShape(Capsule())
+                    .navigationDestination(for: String.self){ view in
+                        if(view == "Play"){
+                            LevelSelection(view: view, path: $path)
                         }
-                        GameView()
                     }
+                    
+                    Button("Setting"){
+                        
+                    }
+                    .frame(width: 60)
+                    .padding(.horizontal, 50)
+                    .padding(.vertical, 15)
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .clipShape(Capsule())
+                    Spacer()
                 }
             }
             .containerRelativeFrame([.horizontal, .vertical])
-            .background(!level.showLevel ? Color.red.opacity(0.6): level.contentViewColor)
+            .background(Color.red.opacity(0.6))
         }
     }
 }
