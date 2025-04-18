@@ -75,9 +75,33 @@ struct SceneViewWrapper: UIViewRepresentable {
                     node.position = SCNVector3(newPos.x, lastPos.y, newPos.z)
                 }
             } else if gesture.state == .ended {
+                guard let node = selectedNode else { return }
+
+                if let scene = sceneView.scene {
+                    var minDist: Float = 100000.0
+                    var snapPosition: SCNVector3 = SCNVector3()
+                    
+                    for potentialPlane in scene.rootNode.childNodes where potentialPlane.name == "plane" {
+                        let distance = getDistance(pos1: node.worldPosition, pos2: potentialPlane.worldPosition)
+                        
+                        if distance < minDist { // adjust threshold as needed
+                            minDist = distance
+                            snapPosition = potentialPlane.worldPosition
+                        }
+                    }
+                    
+                    if (minDist < 1.0) {
+                        node.position = snapPosition
+                    }
+                }
+
                 selectedNode = nil
                 lastHitPosition = nil
             }
+        }
+        
+        func getDistance(pos1: SCNVector3, pos2: SCNVector3) -> Float {
+            return sqrt(pow(pos2.x - pos1.x, 2) + pow(pos2.z - pos1.z, 2))
         }
     }
 }
