@@ -57,7 +57,8 @@ struct SceneViewWrapper: UIViewRepresentable {
         
         let levelPieceCounts: [String : Int] = [
             "art.scnassets/level1.scn" : 4,
-            "art.scnassets/level2.scn" : 4
+            "art.scnassets/level2.scn" : 4,
+            "art.scnassets/level3.scn" : 9
         ]
         
         init (sceneToDisplay: String, level: LevelViewModel) {
