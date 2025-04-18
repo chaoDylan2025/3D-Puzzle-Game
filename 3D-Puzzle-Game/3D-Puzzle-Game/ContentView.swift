@@ -37,17 +37,6 @@ struct ContentView: View {
                             LevelSelection(view: view, path: $path)
                         }
                     }
-                    
-                    Button("Setting"){
-                        
-                    }
-                    .frame(width: 60)
-                    .padding(.horizontal, 50)
-                    .padding(.vertical, 15)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .clipShape(Capsule())
-                    Spacer()
                 }
             }
             .containerRelativeFrame([.horizontal, .vertical])
