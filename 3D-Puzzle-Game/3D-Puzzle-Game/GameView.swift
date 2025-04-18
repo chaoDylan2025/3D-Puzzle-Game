@@ -143,6 +143,7 @@ struct SceneViewWrapper: UIViewRepresentable {
                 // If the number of paired planes / pieces is equal to the total number of pieces,
                 // then each piece is currently snapped to a position on the grid.
                 // We can now check if the pieces are in the correct positions and whether the level is complete or not.
+                // Ex. plane-tl: piece-tl, plane-tr: piece-tr, and so on... (tl stand for top-left)
                 if tagPairs.count >= levelPieceCounts[sceneToDisplay]! {
                     var correctPieces = 0
 
