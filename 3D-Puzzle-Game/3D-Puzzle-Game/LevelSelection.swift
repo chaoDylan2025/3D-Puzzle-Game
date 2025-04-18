@@ -14,7 +14,7 @@ struct LevelSelection: View {
     @EnvironmentObject var currentLevel: LevelViewModel
     @Environment(\.dismiss) private var dismiss
     
-    let levels: [String] = ["Level 1", "Level 2", "Level 3", "Level 4"];
+    let levels: [String] = ["Level 1", "Level 2", "Level 3"];
     
     var body: some View {
         ZStack{
@@ -49,7 +49,6 @@ struct LevelSelection: View {
                 VStack(){
                     // Top part of each level
                     VStack(){
-                        // Pause button area
                         VStack(){
                             if currentLevel.playerWon {
                                 Text("Level Complete!")
@@ -80,9 +79,6 @@ struct LevelSelection: View {
                 break
             case "Level 3":
                 viewModel.sceneToDisplay = "art.scnassets/level3.scn"
-                break
-            case "Level 4":
-                viewModel.sceneToDisplay = "art.scnassets/level4.scn"
                 break
             default:
                 break
