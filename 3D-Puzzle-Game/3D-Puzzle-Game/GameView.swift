@@ -58,7 +58,8 @@ struct SceneViewWrapper: UIViewRepresentable {
             if gesture.state == .began {
                 let hits = sceneView.hitTest(location, options: nil)
                 
-                if let hit = hits.first(where: { $0.node.name == "piece" }) {
+                if let hit = hits.first(where: { $0.node.name!.prefix(5) == "piece" }) {
+                    print(hit.node.name!)
                     selectedNode = hit.node
                     lastHitPosition = hit.worldCoordinates
                 }
