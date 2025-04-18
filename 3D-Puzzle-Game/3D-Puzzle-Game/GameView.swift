@@ -10,9 +10,10 @@ import SceneKit
 
 struct GameView: View {
     @EnvironmentObject var level: LevelViewModel
+    var sceneViewWrapper = SceneViewWrapper()
     
     var body: some View {
-        SceneViewWrapper()
+        sceneViewWrapper
     }
 }
 
@@ -43,7 +44,7 @@ struct SceneViewWrapper: UIViewRepresentable {
     func updateUIView(_ uiView: SCNView, context: Context) {}
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(sceneToDisplay: level.sceneToDisplay)
+        Coordinator(sceneToDisplay: level.sceneToDisplay, level: level)
     }
     
     class Coordinator: NSObject {
@@ -52,14 +53,16 @@ struct SceneViewWrapper: UIViewRepresentable {
         var lastHitPosition: SCNVector3?
         var tagPairs: [String : String] = [:]
         var sceneToDisplay: String
+        var level: LevelViewModel
         
         let levelPieceCounts: [String : Int] = [
             "art.scnassets/level1.scn" : 4,
             "art.scnassets/level2.scn" : 4
         ]
         
-        init(sceneToDisplay: String) {
+        init (sceneToDisplay: String, level: LevelViewModel) {
             self.sceneToDisplay = sceneToDisplay
+            self.level = level
         }
         
         @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
@@ -126,6 +129,8 @@ struct SceneViewWrapper: UIViewRepresentable {
                     }
                     
                     if correctPieces == tagPairs.count {
+                        level.playerWon = true
+                        resetLevel()
                         print("===============")
                         print("PLAYER WINS, LEVEL IS FINISHED")
                     }
@@ -136,5 +141,16 @@ struct SceneViewWrapper: UIViewRepresentable {
         func getDistance(pos1: SCNVector3, pos2: SCNVector3) -> Float {
             return sqrt(pow(pos2.x - pos1.x, 2) + pow(pos2.z - pos1.z, 2))
         }
+        
+        func resetLevel() {
+            tagPairs = [:]
+            selectedNode = nil
+            lastHitPosition = nil
+        }
     }
+}
+
+#Preview {
+    GameView()
+        .environmentObject(LevelViewModel())
 }

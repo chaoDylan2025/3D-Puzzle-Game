@@ -33,6 +33,7 @@ struct LevelSelection: View {
                         Button(level) {
                             levelSceneToDisplay(level: level, viewModel: currentLevel)
                             currentLevel.showLevel = true
+                            currentLevel.playerWon = false
                         }
                         .frame(width: 60)
                         .padding(.horizontal, 50)
@@ -50,20 +51,21 @@ struct LevelSelection: View {
                     VStack(){
                         // Pause button area
                         VStack(){
-                            HStack{
-                                Spacer()
-                                Button("Pause"){
-                                    
+                            if currentLevel.playerWon {
+                                Text("Level Complete!")
+                                Button("Back to Level Select") {
+                                    currentLevel.showLevel = false
+                                    currentLevel.playerWon = false
                                 }
-                                Spacer()
                             }
-                        
                         }
                         GameView()
+                            .environmentObject(currentLevel)
                     }
                 }
             }
-        }.navigationBarBackButtonHidden(!currentLevel.showLevel ? false : true)
+        }
+        .navigationBarBackButtonHidden(!currentLevel.showLevel ? false : true)
         .containerRelativeFrame([.horizontal, .vertical])
         .background(!currentLevel.showLevel ? Color.red.opacity(0.6): currentLevel.contentViewColor)
     }
