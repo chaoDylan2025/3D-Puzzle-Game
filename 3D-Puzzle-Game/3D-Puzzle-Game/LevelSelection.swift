@@ -43,7 +43,7 @@ struct LevelSelection: View {
                         .clipShape(Capsule())
                         .padding([.top, .bottom], 20)
                     }
-                }
+                }.padding([.bottom], 100)
             }
             else{
                 VStack(){
@@ -51,11 +51,16 @@ struct LevelSelection: View {
                     VStack(){
                         VStack(){
                             if currentLevel.playerWon {
-                                Text("Level Complete!")
+                                Text("Level Complete!").font(Font.custom("Calibri", size: 22))
                                 Button("Back to Level Select") {
                                     currentLevel.showLevel = false
                                     currentLevel.playerWon = false
                                 }
+                                .padding(.horizontal, 50)
+                                .padding(.vertical, 15)
+                                .background(Color.green)
+                                .foregroundColor(.white)
+                                .clipShape(Capsule())
                             }
                         }
                         GameView()
