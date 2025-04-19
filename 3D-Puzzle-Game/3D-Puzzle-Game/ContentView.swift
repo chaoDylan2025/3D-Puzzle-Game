@@ -15,14 +15,15 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $path) {
             ZStack{
-                VStack (spacing: 60){
+                VStack (){
+                    Spacer()
                     // Game Title
                     Text("3D Puzzle Game")
                     .font(.largeTitle)
                     .bold()
                     .navigationBarTitleDisplayMode(.inline)
-                    .padding([.top, .bottom], 100)
-                    
+                    .padding([.top, .bottom], 10)
+                    Spacer()
                     Button("Play"){
                         path.append("Play")
                     }
@@ -37,6 +38,7 @@ struct ContentView: View {
                             LevelSelection(view: view, path: $path)
                         }
                     }
+                    Spacer()
                 }
             }
             .containerRelativeFrame([.horizontal, .vertical])
