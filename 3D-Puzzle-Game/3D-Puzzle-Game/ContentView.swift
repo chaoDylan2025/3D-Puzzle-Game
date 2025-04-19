@@ -11,7 +11,7 @@ import SceneKit
 struct ContentView: View {
     @State private var path = NavigationPath()
     @EnvironmentObject var level: LevelViewModel
-    let showMainMenu = false
+
     var body: some View {
         NavigationStack(path: $path) {
             ZStack{

@@ -12,7 +12,6 @@ struct LevelSelection: View {
     let view: String
     @Binding var path: NavigationPath
     @EnvironmentObject var currentLevel: LevelViewModel
-    @Environment(\.dismiss) private var dismiss
     
     let levels: [String] = ["Level 1", "Level 2", "Level 3"];
     
@@ -20,13 +19,14 @@ struct LevelSelection: View {
         ZStack{
             // Display only if user has not selected a level
             if(!currentLevel.showLevel){
+                // Title for selecting level
                 VStack (){
-                    // Game Title
                     Text("Select a Level")
                         .font(.title)
                         .bold()
                     Spacer()
                 }.padding(.top, 70)
+                // Displays buttons for each level
                 VStack {
                     ForEach(levels, id:\.self) { level in
                         Button(level) {
@@ -68,11 +68,12 @@ struct LevelSelection: View {
                 }
             }
         }
-        .navigationBarBackButtonHidden(!currentLevel.showLevel ? false : true)
-        .containerRelativeFrame([.horizontal, .vertical])
-        .background(!currentLevel.showLevel ? Color.red.opacity(0.6): currentLevel.contentViewColor)
+        .navigationBarBackButtonHidden(!currentLevel.showLevel ? false : true) // Hide navigation bar only if level has been selected
+        .containerRelativeFrame([.horizontal, .vertical]) // Helps fill up screen with red background color
+        .background(!currentLevel.showLevel ? Color.red.opacity(0.6): currentLevel.contentViewColor) // Display red background color only if level has not been selected
     }
     
+    // Determines which level to display based on button pressed
     func levelSceneToDisplay(level: String, viewModel: LevelViewModel){
         switch(level){
             case "Level 1":

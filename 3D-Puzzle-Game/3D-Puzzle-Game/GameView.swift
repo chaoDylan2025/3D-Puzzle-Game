@@ -131,9 +131,6 @@ struct SceneViewWrapper: UIViewRepresentable {
                         node.position = snapPosition
                         // Set the planeTag key to the plane's tag and the value to the node's tag
                         tagPairs[planeTag] = node.name
-                        print(tagPairs)
-                        print(tagPairs.count)
-                        print(levelPieceCounts[sceneToDisplay]!)
                     }
                 }
 
@@ -159,8 +156,6 @@ struct SceneViewWrapper: UIViewRepresentable {
                     if correctPieces == tagPairs.count {
                         level.playerWon = true
                         resetLevel()
-                        print("===============")
-                        print("PLAYER WINS, LEVEL IS FINISHED")
                     }
                 }
             }
