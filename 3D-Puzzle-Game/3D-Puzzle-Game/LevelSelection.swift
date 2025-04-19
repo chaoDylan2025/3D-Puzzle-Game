@@ -20,14 +20,13 @@ struct LevelSelection: View {
         ZStack{
             // Display only if user has not selected a level
             if(!currentLevel.showLevel){
-                VStack (spacing: 20){
+                VStack (){
                     // Game Title
                     Text("Select a Level")
                         .font(.title)
                         .bold()
-                        .padding([.top], 20)
                     Spacer()
-                }
+                }.padding(.top, 70)
                 VStack {
                     ForEach(levels, id:\.self) { level in
                         Button(level) {
@@ -41,9 +40,9 @@ struct LevelSelection: View {
                         .background(Color.green)
                         .foregroundColor(.white)
                         .clipShape(Capsule())
-                        .padding([.top, .bottom], 20)
+                        .padding([.top, .bottom], 25)
                     }
-                }.padding([.bottom], 100)
+                }
             }
             else{
                 VStack(){
