@@ -2,7 +2,7 @@
 //  GameView.swift
 //  3D-Puzzle-Game
 //
-//  Created by Luke B. Dykstra on 4/15/25.
+//  Created by Luke B. Dykstra and Dylan Chao on 4/15/25.
 //
 
 import SwiftUI

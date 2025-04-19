@@ -2,7 +2,7 @@
 //  LevelViewModel.swift
 //  3D-Puzzle-Game
 //
-//  Created by Dylan Chao on 4/10/25.
+//  Created by Dylan Chao and Luke B. Dykstra on 4/10/25.
 //
 
 import SwiftUI
